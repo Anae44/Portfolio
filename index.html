@@ -1,0 +1,709 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio de Anaé Desigaux : projets informatiques et cybersécurité.">
+
+  <title>Portfolio | Anaé Desigaux</title>
+
+  <style>
+    :root {
+      --navy: #102744;
+      --blue: #3979b9;
+      --light-blue: #eaf2fb;
+      --background: #f5f7fb;
+      --white: #ffffff;
+      --text: #26364a;
+      --muted: #64748b;
+      --border: #dce5ef;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 85px;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--background);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    a:focus-visible {
+      outline: 3px solid var(--blue);
+      outline-offset: 4px;
+    }
+
+    .container {
+      width: min(1080px, 90%);
+      margin: 0 auto;
+    }
+
+    /* Navigation */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.97);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav {
+      min-height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      color: var(--navy);
+      font-weight: 800;
+      letter-spacing: 1px;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text);
+      font-size: 0.9rem;
+    }
+
+    /* Présentation */
+
+    .hero {
+      padding: 95px 0 80px;
+      background: linear-gradient(135deg, #102744, #234f7e);
+      color: var(--white);
+    }
+
+    .eyebrow {
+      color: #b7d5f5;
+      font-size: 0.85rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .hero h1 {
+      margin: 12px 0;
+      font-size: clamp(2.3rem, 6vw, 4rem);
+      line-height: 1.2;
+    }
+
+    .hero h2 {
+      color: #b7d5f5;
+      font-size: clamp(1.1rem, 3vw, 1.5rem);
+      font-weight: 500;
+      margin-bottom: 22px;
+    }
+
+    .hero p {
+      max-width: 680px;
+      color: #e1eaf5;
+      margin-bottom: 25px;
+    }
+
+    .hero-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 25px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 10px 18px;
+      border-radius: 6px;
+      font-weight: bold;
+      border: 1px solid transparent;
+    }
+
+    .button-primary {
+      background: var(--white);
+      color: var(--navy);
+    }
+
+    .button-outline {
+      border-color: #b7d5f5;
+      color: var(--white);
+    }
+
+    .button:hover {
+      opacity: 0.85;
+      text-decoration: none;
+    }
+
+    /* Sections */
+
+    section.content-section {
+      padding: 65px 0;
+    }
+
+    .section-heading {
+      margin-bottom: 28px;
+    }
+
+    .section-heading h2 {
+      color: var(--navy);
+      font-size: clamp(1.7rem, 4vw, 2.2rem);
+      margin-bottom: 8px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    /* Cartes des projets */
+
+    .project-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 25px;
+      box-shadow: 0 4px 14px rgba(16, 39, 68, 0.04);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(16, 39, 68, 0.09);
+    }
+
+    .project-card h3 {
+      color: var(--navy);
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    .project-card p {
+      margin-bottom: 15px;
+    }
+
+    .project-meta {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+    }
+
+    .project-meta strong {
+      color: var(--text);
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin: 5px 0 18px;
+    }
+
+    .tag {
+      background: var(--light-blue);
+      color: #245a91;
+      border-radius: 5px;
+      padding: 3px 9px;
+      font-size: 0.8rem;
+    }
+
+    .project-link {
+      margin-top: auto;
+      padding-top: 5px;
+      font-weight: bold;
+    }
+
+    /* Plateformes cyber et divers */
+
+    .info-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 22px;
+    }
+
+    .info-card h3 {
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+
+    .info-card + .info-card {
+      margin-top: 14px;
+    }
+
+    .info-card p {
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    /* Pied de page */
+
+    footer {
+      background: var(--navy);
+      color: #d8e4f2;
+      text-align: center;
+      padding: 28px 15px;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: #b7d5f5;
+    }
+
+    @media (max-width: 700px) {
+      nav {
+        padding: 14px 0;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        gap: 10px 16px;
+      }
+
+      .hero {
+        padding: 65px 0;
+      }
+
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+
+      section.content-section {
+        padding: 45px 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+  <header>
+    <nav class="container" aria-label="Navigation principale">
+      <a class="brand" href="#accueil">MON PORTFOLIO</a>
+
+      <ul class="nav-links">
+        <li><a href="#personnels">Personnels</a></li>
+        <li><a href="#academiques">Académiques</a></li>
+        <li><a href="#cyber">Cyber</a></li>
+        <li><a href="#divers">Divers</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- PRÉSENTATION -->
+    <section class="hero" id="accueil">
+      <div class="container">
+        <p class="eyebrow">Portfolio professionnel</p>
+
+        <!-- À PERSONNALISER -->
+        <h1>Anaé Desigaux</h1>
+        <h2>Étudiant en informatique | Cybersécurité</h2>
+
+        <p>
+          Etudiante en 3ème année à TELECOM Nancy (école d'ingénieurs en informatique) avec approfondissement ISS (Internet, Systèmes connectés et sécurité)
+        </p>
+      </div>
+    </section>
+
+    <!-- PROJETS PERSONNELS -->
+    <section class="content-section" id="personnels">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Projets personnels</h2>
+          <p>Les projets que je développe par intérêt personnel.</p>
+        </div>
+
+        <div class="project-grid">
+
+          <article class="project-card">
+            <h3>Site Web d'organisation de menu</h3>
+
+            <p>
+              Séléction de recettes parmi une base de données personnalisée (mode aléatoire ou non) pour créer un semainier téléchargeable en PDF et former une liste de courses correspondante.
+            </p>
+
+            <p class="project-meta">
+              <strong>Équipe :</strong> 1 personne
+            </p>
+
+            <p class="project-meta">
+              <strong>Langages et outils :</strong>
+            </p>
+
+            <div class="tags">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">PHP</span>
+              <span class="tag">SQL</span>
+              <span class="tag">Linux</span>
+            </div>
+
+          </article>
+
+          <article class="project-card">
+            <h3>Concours DataVisualisation Grand-Est 2025</h3>
+            <p>Site web présentant les différentes espèces d'oiseaux, plantes et papillons observables ainsi que leur présence dans la région Grand-Est au cours du temps.</p>
+            <p class="project-meta">
+              <strong>Équipe :</strong> 1 personne
+            </p>
+            <p class="project-meta">
+              <strong>Langages et outils :</strong>
+            </p>
+            <div class="tags">
+              <span class="tag">Excel</span>
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">Git</span>
+            </div>
+            <a class="project-link" href="https://anae44.github.io/biodiversit%C3%A9GE.html">
+              Voir le projet →
+            </a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJETS ACADÉMIQUES -->
+    <section class="content-section" id="academiques">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Projets académiques</h2>
+          <p>Les projets réalisés dans le cadre de mes études.</p>
+        </div>
+
+        <div class="project-grid">
+
+          <article class="project-card">
+            <h3>Projet Industriel - Surveillance des communications réseau du CHU</h3>
+            <p>
+              Développement d'un outil interne d'inventaire et de cartographie des dispositifs médicaux, avec une analyse des échanges/protocoles propres aux dispositifs médicaux et une détection d'anomalies.
+            </p>
+            <p class="project-meta">
+              <strong>Équipe :</strong> 3 personnes
+            </p>
+            <p class="project-meta">
+              <strong>Langages et outils :</strong>
+            </p>
+            <div class="tags">
+              <span class="tag">Git</span>
+              <span class="tag"></span>
+              <span class="tag"></span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <h3>Application Android</h3>
+            <p>
+              Programmation d'une application Android qui détecte les lumières laissées allumées, en soirée ou la nuit, dans un bâtiment afin d'alerter la personne responsable.
+            </p>
+            <p class="project-meta">
+              <strong>Équipe :</strong> 1 personne
+            </p>
+            <p class="project-meta">
+              <strong>Langages et outils :</strong>
+            </p>
+            <div class="tags">
+              <span class="tag">Java (Android Studio)</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <h3>TIPE - Site Web de pallning pour les JO 2024</h3>
+            <p>
+              Site web créant un emploi du temps optimisé en fonction des critères d'un utilisateur afin d'assister aux Jeux Olympiques de Paris 2024.
+            </p>
+            <p class="project-meta">
+              <strong>Équipe :</strong> 2 personnes
+            </p>
+            <p class="project-meta">
+              <strong>Langages et outils :</strong>
+            </p>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">Knowledge Graph</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <h3>Compilateur</h3>
+            <p>
+              Programmation d'un compilateur (analyse syntaxique, analyse lexicale) pour une sous-grammaire de Java.
+            </p>
+            <p class="project-meta">
+              <strong>Équipe :</strong> 4 personnes
+            </p>
+            <p class="project-meta">
+              <strong>Langages et outils :</strong>
+            </p>
+            <div class="tags">
+              <span class="tag">C</span>
+              <span class="tag">Linux</span>
+              <span class="tag">Git</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <h3>Jeu - Blocus</h3>
+            <p>
+              Site web avec inscription pour jouer au jeu Blokus pour 4 personnes (avec ou sans intelligence artificielle) avec la possibilité de sauvegarder des parties.
+            </p>
+            <p class="project-meta">
+              <strong>Équipe :</strong> 4 personnes
+            </p>
+            <p class="project-meta">
+              <strong>Langages et outils :</strong>
+            </p>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">Flask</span>
+              <span class="tag">Linux</span>
+              <span class="tag">Git</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <h3>Jeu - Crossyroad</h3>
+            <p>
+              Programmation du jeu Crossyroad avec un interface terminale, une interface 2D et une interface 3D ainsi qu'une intelligence artificielle.
+            </p>
+            <p class="project-meta">
+              <strong>Équipe :</strong> 4 personnes
+            </p>
+            <p class="project-meta">
+              <strong>Langages et outils :</strong>
+            </p>
+            <div class="tags">
+              <span class="tag">C (SDL)</span>
+              <span class="tag">Linux</span>
+              <span class="tag">Git</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <h3>Jeu - Q-bert</h3>
+            <p>
+              Programmation du jeu Q-bert et d'une intelligence artificielle.
+            </p>
+            <p class="project-meta">
+              <strong>Équipe :</strong> 3 personnes
+            </p>
+            <p class="project-meta">
+              <strong>Langages et outils :</strong>
+            </p>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">Git</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <h3>Coding Week - Jeu de donjon</h3>
+            <p>
+              Site web avec un jeu de donjon contre une intelligence artificielle.
+            </p>
+            <p class="project-meta">
+              <strong>Équipe :</strong> 4 personnes
+            </p>
+            <p class="project-meta">
+              <strong>Langages et outils :</strong>
+            </p>
+            <div class="tags">
+              <span class="tag">Java</span>
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">Git</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <h3>Système audio adaptatif</h3>
+            <p>
+              Système capable d'adapter automatiquement la musique à l'état cognitif et émotionnel de l'utilisateur en temps réel, à l'aide de signaux EEG.
+            </p>
+            <p class="project-meta">
+              <strong>Équipe :</strong> 1 personne
+            </p>
+            <p class="project-meta">
+              <strong>Langages et outils :</strong>
+            </p>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">Muse 2</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CYBERSÉCURITÉ -->
+    <section class="content-section" id="cyber">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Résultats en cybersécurité</h2>
+          <p>
+            Mes entraînements, classements, challenges et
+            réalisations sur les plateformes de cybersécurité.
+          </p>
+        </div>
+
+        <div class="project-grid">
+
+          <article class="project-card">
+            <h3>TryHackMe</h3>
+            <p>
+                Profil : Ana044.  
+                J'ai participé à l'Advent of Cyber 2024 ainsi qu'au Summer Hacking 2026
+            </p>
+            <p class="project-meta">
+              <strong>Rooms :</strong> 73
+              <strong>Level :</strong> 0x9 MAGE
+            </p>
+            <div class="tags">
+              <span class="tag">Red Teaming</span>
+              <span class="tag">Malware Analysis</span>
+              <span class="tag">Penetration Testing</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <h3>Hack The Box</h3>
+            <p>
+              Profil : anae44
+            </p>
+            <p class="project-meta">
+              <strong>Level :</strong> 27
+            </p>
+            <div class="tags">
+              <span class="tag">Web</span>
+              <span class="tag">Penetration Testing</span>
+              <span class="tag">Information Security</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <h3>Root Me</h3>
+            <p>
+              Profil : Anaé44
+            </p>
+            <p class="project-meta">
+              <strong>Points :</strong> 405
+              <strong>Challenges :</strong> 33
+            </p>
+            <div class="tags">
+              <span class="tag">Web - Client</span>
+              <span class="tag">Stéganographie</span>
+              <span class="tag">Cryptanalyse</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <h3>Hackin'TN</h3>
+            <p>
+              Club de Hacking TELECOM Nancy.  
+              Participation aux CTF d'intégration 2024-2025-2026
+            </p>
+            <div class="tags">
+              <span class="tag">Web</span>
+              <span class="tag">App - Script</span>
+              <span class="tag">Cryptographie</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- DIVERS -->
+    <section class="content-section" id="divers">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Divers</h2>
+          <p>
+            Autres expériences pertinentes.
+          </p>
+        </div>
+
+        <article class="info-card">
+          <h3>Cyber Humanum Est 2027</h3>
+          <p>
+            Exercice universitaire immersif de cyberguerre rassemblant des étudiants de divers cursus, des entreprises dans le domaine de la cybersécurité et le Ministère des armées.
+          </p>
+          <a href="https://cyberhumanumest.com/">
+            En savoir plus →
+          </a>
+        </article>
+
+        <article class="info-card">
+          <h3>Advent of Code 2024</h3>
+          <p>
+            Défis d'algorithmie tous les jours pendan le mois décembre.
+            Utilisation du langage de programmation Python.
+        </article>
+
+        
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>
+      © <span id="year"></span> Anaé Desigaux ·
+      <a href="https://github.com/Anae44">
+        GitHub
+      </a>
+    </p>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+
+</body>
+</html>
